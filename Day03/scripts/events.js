@@ -1,25 +1,26 @@
-$("#generate").click(function() {
-    generate();
-    $("#generate").attr('disabled', true);
-    $("#generate").addClass("disabled-button");
-    $("#set-color").removeAttr('disabled');
-    $("#set-color").removeClass("disabled-button");
-    $("#reset").removeAttr('disabled');
-    $("#reset").removeClass("disabled-button");
-});
+$(function(){
+	var $setColor = $("#set-color");
+	var $generate = $("#generate");
+	var $reset = $("#reset");
+	var $blocksContainer = $(".blocks.container");
+	
+	$generate.click(function() {
+		generate($blocksContainer);		
+		disableButton($generate);
+		enableButton($setColor);		
+		enableButton($reset);
+	});
 
-$("#set-color").click(function() {
-    setColor();
-    $("#set-color").attr('disabled', true);
-    $("#set-color").addClass("disabled-button");
-});
+	$setColor.click(function() {
+		setColor();
+		disableButton($setColor);
+	});
 
-$("#reset").click(function() {
-    reset();
-    $("#generate").removeAttr('disabled');
-    $("#generate").removeClass("disabled-button");
-    $("#set-color").attr('disabled', true);
-    $("#set-color").addClass("disabled-button");
-    $("#reset").attr('disabled', true);
-    $("#reset").addClass("disabled-button");
-});
+	$reset.click(function() {
+		reset($blocksContainer);		
+		enableButton($generate);
+		disableButton($setColor);		
+		disableButton($reset);
+	});
+})
+

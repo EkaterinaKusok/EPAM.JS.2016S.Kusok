@@ -2,25 +2,26 @@ function random(min, max) {
     return Math.floor((Math.random() * max) + min);
 }
 
-function generate() {
-    $(".blocks.container").empty(); // Удаляем содержимое контейнера
-    for (var i = 0; i < 50; i++) { // Заполняем контейнер блоками
-        generateBlock();
+function generate($container) {
+    $container.empty();
+    for (var i = 0; i < 50; i++) { 
+        generateBlock($container);
     }
 }
 
-function generateBlock() {
+function generateBlock($container) {
     var content = $('<div/>', {
         class: 'block',
         html: random(1, 100)
     });
-    $(".blocks.container").append(content);
+    $container.append(content);
 }
 
 function setColor() {
-    $(".block").each(function(index) {
-        var color = chooseColor($(this).text());
-        $(this).css("background-color", color);
+    $(".block").each(function() {
+		var $this = $(this);
+        var color = chooseColor($this.text());
+        $this.css("background-color", color);
     });
 }
 
@@ -36,6 +37,16 @@ function chooseColor(value) {
     }
 }
 
-function reset() {
-    $(".blocks.container").empty();
+function reset($container) {
+    $container.empty();
+}
+
+function enableButton($button){	
+	$button.removeAttr('disabled');
+	$button.removeClass("disabled-button");
+}
+
+function disableButton($button){	
+	$button.attr('disabled', true);
+	$button.addClass("disabled-button");
 }
