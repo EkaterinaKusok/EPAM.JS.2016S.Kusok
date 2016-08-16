@@ -1,0 +1,115 @@
+﻿body{
+	margin:0;
+	padding:0;
+}
+.container{
+	width: 900px;
+	height: 500px;
+	border: 1px solid lightgray;	
+    margin: 100px auto 0;
+	position: relative;
+} 
+
+.field {
+    width: 606px;
+    height: 402px;   
+    /* background-color: lightblue; */
+	border: 1px solid lightgray;	
+    margin: 50px auto;
+	position: relative;
+}
+
+.active-field {
+	margin: 0;
+	display: inline-block;	
+	position: relative;
+	float: left;
+    width: 400px;
+    height: 400px;	
+	border: 1px solid lightgray;
+}
+.resources-field{
+	display: inline-block;
+	float: left;	
+    width: 100px;
+    height: 400px;	
+	text-align: center;	
+	border: 1px solid lightgray;	
+} 
+
+button{
+	width: 100px;
+	margin: 25px;
+	cursor: pointer;
+	border-color: darkgreen;
+	border-radius: 5px;
+	position: absolute;
+	right: 0px;
+}
+button.start{
+	color: white;
+	background-color: darkgreen;
+}
+button.stop{
+	color: darkgreen;
+	background-color: yellow;
+}
+
+.resource{
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	/* border: 1px solid lightgray; */
+	cursor: pointer;
+}
+.active-field .resource{	
+	display: none;
+}
+
+.bomb{	
+	background-image: url(../img/bomb.png);
+}
+.cheese{
+	background-image: url(../img/cheese.png); 
+}
+.cherry{
+	background-image: url(../img/cherry.png);
+}
+.orange{
+	background-image: url(../img/orange.png);
+}
+.pumpkin{	
+	background-image: url(../img/pumpkin.png);
+}
+
+.counter{
+	position: relative;
+	width: 98px;
+	height: 98px;
+	border: 1px solid lightgray;
+	margin: 10px auto;
+}
+.counter .resource{	
+
+	position: relative;
+	margin: 5px auto 0;
+	cursor: default;
+}
+
+.top{
+	position: absolute;
+	top: 0px;
+}
+.bottom{
+	position: absolute;
+	bottom: 0px;	
+}
+
+.disabled{
+	cursor:default;
+}
+
+p{
+	margin: 0;
+	padding: 66px 0 0 0;
+}
