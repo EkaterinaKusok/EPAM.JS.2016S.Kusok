@@ -35,3 +35,13 @@ button{
 	border: 1px solid #F5F5F5;
 	text-align: center;
 }
+
+.red {
+    background-color: #f44336;
+}
+.orange {
+    background-color: #ff9800;
+}
+.green {
+    background-color: #4caf50;
+}
