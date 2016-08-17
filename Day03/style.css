@@ -19,12 +19,22 @@ body{
 
 button{
 	width: 100px;
-	margin: 10px 25px;
 	cursor: pointer;
+}
+.button {
+	width: 100px;	
+	margin: 10px 15px;
+    border: 1px solid gray;
+    padding: 2px 10px;
+    cursor: pointer;
+    text-align: center;
+	background-color: cornsilk ;
 }
 
 .disabled-button{
 	cursor: default;
+	color: darkgray;
+	background-color: #eee;
 }
 
 .block{
