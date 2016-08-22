@@ -40,18 +40,12 @@ body {
     margin-bottom: 5px;
     cursor: pointer;
     text-align: center;
+	background-color: #ff9800;
 }
-	.button#btnStart {
+	/*.button#btnGenerate {
         background-color: #ff9800;
-    }
-    .button#btnGenerate {
-        background-color: #ff9800;
-    }
-	button.start{
-		color: white;
-		background-color: darkgreen;
-	}
-	button.stop{
+    }*/
+	.button.stop{
 		color: darkgreen;
 		background-color: yellow;
 	}
@@ -63,16 +57,19 @@ body {
     position: absolute;
     top: 0;
     right: 0;
+	color: red;
+	text-align: center;
 }
     .zombie.michael {
-        width: 46px;
-        height: 69px;
+        width: 50px;
+        height: 74px;
         background-image: url(../img/michael.gif);
         background-size: cover;
+		background-position: bottom;
     }
     .zombie.strong {
         width: 60px;
-        height: 73px;
+        height: 74px;
         background-image: url(../img/strong.gif);
         background-size: cover;
     }
