@@ -1,7 +1,7 @@
 Unit.Zombie = function(config) {
     this.name = "zombie";
     this.fullHealth = 50;
-    this.health = this.fullHealth;
+    this.health;
     this.speed = config.speed;
     this.isDie = false;
 
@@ -13,6 +13,7 @@ Unit.Zombie = function(config) {
     };
 
     this.show = function($line) {
+		this.health = this.fullHealth;
         settings.$zombie = $("<div>", {
             class: "zombie " + this.name
         });

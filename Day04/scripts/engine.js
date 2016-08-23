@@ -46,14 +46,14 @@ $(function() {
         }
     });
 
-    $slowUpButton.click(function() { // 10s 100iterations
+    $slowUpButton.click(function() {
         if (!$slowUpButton.hasClass("disabled")) {
             disabled($slowUpButton);
             moveSlowCounter = moveSlowDuration / moveFrequency;
         }
     });
 
-    $growOldButton.click(function() { // 10s 1s-1health
+    $growOldButton.click(function() {
         if (!$growOldButton.hasClass("disabled")) {
             disabled($growOldButton);
             clearTimeout(growOldTimerId);
