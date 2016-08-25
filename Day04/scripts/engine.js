@@ -26,6 +26,7 @@ $(function() {
     $startButton.click(function() {
         $gameOver.hide();
         var $this = $(this);
+		
         if ($this.hasClass("start")) {
             var growOldCounter = 0;
             var moveSlowCounter = 0;
@@ -66,6 +67,7 @@ $(function() {
         for (var i = 0; i < zombies.length; i++) {
             zombies[i].reduceHealth(reduceHealthValue);
         }
+		
         zombies = $.grep(zombies, function(a) {
             return !a.isDie;
         });
@@ -75,9 +77,11 @@ $(function() {
         clearTimeout(moveTimerId);
         clearTimeout(growOldTimerId);
         changeToStartButton($startButton);
+		
         for (var i = 0; i < zombies.length; i++) {
             zombies[i].die();
         }
+		
         zombies = [];
     });
 
@@ -95,6 +99,7 @@ $(function() {
 
     function moveZombies() {
         var isSlow = false;
+		
         if (moveSlowCounter > 0) {
             moveSlowCounter--;
             isSlow = true;
@@ -103,12 +108,14 @@ $(function() {
             moveSlowCounter--;
             enabled($slowUpButton);
         }
+		
         for (var i = 0; i < zombies.length; i++) {
             zombies[i].move(isSlow);
             if (zombies[i].isEndPosition()) {
                 gameOver();
             }
         }
+		
         moveTimerId = setTimeout(moveZombies, moveFrequency);
     }
 
@@ -117,6 +124,7 @@ $(function() {
             for (var i = 0; i < zombies.length; i++) {
                 zombies[i].reduceHealth(1);
             }
+			
             zombies = $.grep(zombies, function(a) {
                 return !a.isDie;
             });
@@ -134,9 +142,11 @@ $(function() {
         clearTimeout(growOldTimerId);
         $gameOver.show();
         changeToStartButton($startButton);
+		
         for (var i = 0; i < zombies.length; i++) {
             zombies[i].die();
         }
+		
         zombies = [];
     }
 
@@ -151,15 +161,16 @@ $(function() {
     function changeToStopButton($button) {
         $button.removeClass("start").addClass("stop");
         $button.text("Stop");
-
         enabled($generateButton);
+        enabled($explodeButton);
+		
         if (moveSlowCounter < 1) {
             enabled($slowUpButton);
         }
+		
         if (growOldCounter < 1) {
             enabled($growOldButton);
         }
-        enabled($explodeButton);
     }
 
     function changeToStartButton($button) {

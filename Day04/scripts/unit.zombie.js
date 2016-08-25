@@ -19,6 +19,7 @@ Unit.Zombie = function(config) {
         });
         settings.$zombie.innerHTML = this.health;
         settings.$zombie.css({ "left": settings.currentPosition + "px" });
+		
         var $health = $("<div>", {
             class: "health"
         });
@@ -37,6 +38,7 @@ Unit.Zombie = function(config) {
         else {
             settings.currentPosition -= this.speed;
         }
+		
         settings.$zombie.css({ "left": settings.currentPosition + "px" });
     }
 

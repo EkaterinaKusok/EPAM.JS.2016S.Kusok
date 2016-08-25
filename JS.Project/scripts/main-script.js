@@ -20,6 +20,7 @@ $(function() {
     $button.click(function() {
         var $this = $(this);
         var $resources = $(".active-field .resource");
+		
         if ($this.text() == "Start") {
             start($resources);
             changeToStopButton($this);
@@ -60,6 +61,7 @@ $(function() {
 
         function incrementResourceCounter(event) {
             $this = $(this);
+			
             if (!$this.hasClass("disabled")) {
                 var randomType = event.data.resource;
                 resources[randomType].counter++;
@@ -87,10 +89,12 @@ $(function() {
             $counter = $(".counter p").eq(randomType);
             resources[randomType].counter -= 10;
             var resultCounter = resources[randomType].counter;
+			
             if (resources[randomType].counter <= 0) {
                 resources[randomType].counter = 0;
                 resultCounter = "-";
             }
+			
             $counter.text(resultCounter);
             $(this).remove();
         }
