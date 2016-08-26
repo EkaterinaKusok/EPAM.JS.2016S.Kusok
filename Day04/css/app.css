@@ -20,10 +20,13 @@ body {
 #field {
     width: 900px;
     margin: 0 auto;
+	background-image: url(../img/field.png);
+	background-size: 900px 385px;
 }
 .field-line {
     height: 75px;
-    background-color: #4caf50;
+    /*background-color: #4caf50;*/
+	border: 1px solid green;
     position: relative;
 }
 

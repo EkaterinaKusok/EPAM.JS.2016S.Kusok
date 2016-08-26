@@ -6,6 +6,7 @@ $(function() {
     var growOldTimerId;
     var growOldCounter = 0;
     var moveSlowCounter = 0;
+	var generateZombieId;
 
     var moveSlowDuration = 10000;
     var moveFrequency = 100;
@@ -17,7 +18,7 @@ $(function() {
     var $fieldLines = $(".field-line");
     var $gameOver = $(".game-over");
     var $startButton = $("#btnStart");
-    var $generateButton = $("#btnGenerate");
+    //var $generateButton = $("#btnGenerate");
     var $slowUpButton = $("#btnSlowUp");
     var $growOldButton = $("#btnGrowOld");
     var $explodeButton = $("#btnExplode");
@@ -32,20 +33,24 @@ $(function() {
             var moveSlowCounter = 0;
             moveTimerId = setTimeout(moveZombies, moveFrequency);
             growOldTimerId = setTimeout(growOldZombies, growOldFrequency);
+			
+			generateZombieId = setTimeout(generateZombie, random (100, 1000));
+			
             changeToStopButton($this);
         }
         else {
             clearTimeout(moveTimerId);
             clearTimeout(growOldTimerId);
+			clearTimeout(generateZombieId);
             changeToStartButton($this);
         }
     });
 
-    $generateButton.click(function() {
+ /*    $generateButton.click(function() {
         if (!$generateButton.hasClass("disabled")) {
             createZombie();
         }
-    });
+    }); */
 
     $slowUpButton.click(function() {
         if (!$slowUpButton.hasClass("disabled")) {
@@ -76,6 +81,7 @@ $(function() {
     $resetButton.click(function() {
         clearTimeout(moveTimerId);
         clearTimeout(growOldTimerId);
+		clearTimeout(generateZombieId);
         changeToStartButton($startButton);
 		
         for (var i = 0; i < zombies.length; i++) {
@@ -85,17 +91,26 @@ $(function() {
         zombies = [];
     });
 
-    function createZombie() {
-        var config = {
-            position: $fieldLines.width() - 50,
-            speed: 1
-        };
-        var randomZombieType = random(0, zombieTypes.length - 1);
-        var zombie = new zombieTypes[randomZombieType](config);
-        var line = random(0, 4);
-        zombie.show($fieldLines.get(line));
-        zombies[zombies.length] = zombie;
-    }
+    
+	
+	function generateZombie() {
+		createZombie();
+		var randomTime = random (1000, 3000);
+		//console.log (randomTime);
+		generateZombieId = setTimeout(generateZombie, randomTime);
+		
+		function createZombie() {
+			var config = {
+				position: $fieldLines.width() - 50,
+				speed: 1
+			};
+			var randomZombieType = random(0, zombieTypes.length - 1);
+			var zombie = new zombieTypes[randomZombieType](config);
+			var line = random(0, 4);
+			zombie.show($fieldLines.get(line));
+			zombies[zombies.length] = zombie;
+		}
+	}
 
     function moveZombies() {
         var isSlow = false;
@@ -161,7 +176,7 @@ $(function() {
     function changeToStopButton($button) {
         $button.removeClass("start").addClass("stop");
         $button.text("Stop");
-        enabled($generateButton);
+        // enabled($generateButton);
         enabled($explodeButton);
 		
         if (moveSlowCounter < 1) {
@@ -177,7 +192,7 @@ $(function() {
         $button.removeClass("stop").addClass("start");
         $button.text("Start");
 
-        disabled($generateButton);
+        // disabled($generateButton);
         disabled($slowUpButton);
         disabled($growOldButton);
         disabled($explodeButton);
